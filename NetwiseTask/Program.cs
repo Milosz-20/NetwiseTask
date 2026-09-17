@@ -1,3 +1,4 @@
+using NetwiseTask.Endpoints;
 using NetwiseTask.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,12 +21,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/fact", async (ICatFactService catFactService, IFactLogWriter logWriter) =>
-{
-    var fact = await catFactService.GetRandomFactAsync();
-    await logWriter.AppendAsync(fact);
-    return fact;
-})
-.WithName("GetCatFact");
+app.MapGet("/fact", FactEndpoint.Handle)
+    .WithName("GetCatFact");
 
 app.Run();
