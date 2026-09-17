@@ -10,3 +10,9 @@ dotnet run
 ```
 
 Endpoint: `GET /fact` (np. `https://localhost:7282/fact`)
+
+## Testy
+
+```bash
+dotnet test
+```
